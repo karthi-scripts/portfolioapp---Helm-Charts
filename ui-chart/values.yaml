@@ -1,0 +1,17 @@
+
+deploy_name: ui-deploy
+
+port: 80
+
+image_tag: registry.gitlab.com/karthi-script/cicd_project:latest
+
+container_name: deploy-nginx
+
+dockerConfigJson: |
+  {
+    "auths": {
+      "registry.gitlab.com": {
+        "auth": "a2FydGhpLXNjcmlwdHM6Z2xwYXQtM0FSSzVxa1o5bVptQ0Y0c3h6NV8="
+      }
+    }
+  }

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deploy_name }}
+  labels:
+    app: {{ .Values.deploy_name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.deploy_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deploy_name }}
+    spec:
+      containers:
+      - name: {{ .Values.container_name }}
+        image: registry.gitlab.com/karthi-script/cicd_project:v4
+        ports:
+        - containerPort: {{ .Values.port }}
+        
+      imagePullSecrets:
+      - name: gitlab-img-pull-ui
