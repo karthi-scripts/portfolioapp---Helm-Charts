@@ -4,7 +4,7 @@ metadata:
   name: ui-portfolio-service-1
   
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: {{ .Values.deploy_name }}
   ports:

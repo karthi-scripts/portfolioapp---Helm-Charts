@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portfolio-ingress
+  annotations:
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/load-balancer-name: aws-load-balancer-controller
+
+spec:
+  ingressClassName: my-ingress-class
+  rules:
+  defaultBackend:
+    service:
+      name: ui-portfolio-service-1
+      port:
+        number: 80   
